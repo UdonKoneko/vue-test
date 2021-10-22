@@ -1,7 +1,19 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Test Vue</title>
-        <script src="https://unpkg.com/vue@next"></script>
-    </head>
+  <head>
+    <title>Test Vue</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="app">{{ message }}</div>
+
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          message: "うどんだいすき",
+        },
+      });
+    </script>
+  </body>
 </html>
