@@ -2,18 +2,19 @@
 <html>
   <head>
     <title>Test Vue</title>
-    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/vue@3.0.0/dist/vue.global.js"></script>
   </head>
   <body>
     <div id="app">{{ message }}</div>
 
     <script>
-      var app = new Vue({
-        el: "#app",
-        data: {
-          message: "うどんだいすき",
+      Vue.createApp({
+        data() {
+          return {
+            message: "うどんだいすき",
+          };
         },
-      });
+      }).mount("#app");
     </script>
   </body>
 </html>
