@@ -32,10 +32,10 @@ const app = Vue.createApp({
 
 app.component("todo-item", {
   template: `
-    <li>
+      <li>
         {{ title }}
         <button @click="$emit('remove')">Remove</button>
-</li>
+      </li>
     `,
   props: ["title"],
   emits: ["remove"],
