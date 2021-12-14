@@ -5,25 +5,17 @@
     <script src="https://unpkg.com/vue@3.0.0/dist/vue.global.js"></script>
   </head>
   <body>
-    <div id="app">
-      <table>
-        <thead>
-          <tr>
-            <th class="task-id">ID</th>
-            <th class="task-comment">コメント</th>
-            <th class="task-state">ステータス</th>
-            <th class="task-button">-</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </div>
+    <ul id="app">
+      <li v-for="(todo, index) in todos" v-bind:key="todo.id">
+        {{ index }} - {{ todo.comment }}
+      </li>
+    </ul>
 
     <script>
       Vue.createApp({
         data() {
           return {
-            message: "うどんだいすき",
+            todos: [{ comment: "aaa" }, { state: "○" }],
           };
         },
       }).mount("#app");
