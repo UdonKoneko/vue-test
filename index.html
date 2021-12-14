@@ -5,7 +5,19 @@
     <script src="https://unpkg.com/vue@3.0.0/dist/vue.global.js"></script>
   </head>
   <body>
-    <div id="app">{{ message }}</div>
+    <div id="app">
+      <table>
+        <thead>
+          <tr>
+            <th class="task-id">ID</th>
+            <th class="task-comment">コメント</th>
+            <th class="task-state">ステータス</th>
+            <th class="task-button">-</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
 
     <script>
       Vue.createApp({
