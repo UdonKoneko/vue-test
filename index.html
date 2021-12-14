@@ -6,8 +6,8 @@
   </head>
   <body>
     <ul id="app">
-      <li v-for="(todo, index) in todos" v-bind:key="todo.id">
-        {{ index }} - {{ todo.comment }}
+      <li v-for="(value, name, index) in todos">
+        {{ index }}. {{ name }}: {{ value }}
       </li>
     </ul>
 
@@ -15,7 +15,9 @@
       Vue.createApp({
         data() {
           return {
-            todos: [{ comment: "aaa" }, { state: "○" }],
+            todos: {
+              title: "aaa",
+            },
           };
         },
       }).mount("#app");
