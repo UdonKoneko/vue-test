@@ -1,24 +1,44 @@
-const app = new Vue({
-  el: "#app",
-  data: {
-    // 使用するデータ
+const app = Vue.createApp({
+  data() {
+    return {
+      newTodoText: "",
+      todos: [
+        {
+          id: 1,
+          title: "aaa",
+        },
+        {
+          id: 2,
+          title: "bbb",
+        },
+        {
+          id: 3,
+          title: "ccc",
+        },
+      ],
+      nextTodoId: 4,
+    };
   },
   methods: {
-    // 使用するメソッド
+    addNewTodo() {
+      this.todos.push({
+        id: this.nextTodoId++,
+        title: this.newTodoText,
+      });
+      this.newTodoText = "";
+    },
   },
 });
 
-var STRAGE_KEY = "todos-vuejs-demo";
-var todoStrage = {
-  fetch: function () {
-    var todos = JSON.parse(localStorage.getItem(STRAGE_KEY) || "[]");
-    todos.forEach(function (todo, index) {
-      todo.id = index;
-    });
-    todoStrage.uid = todos.length;
-    return todos;
-  },
-  save: function (todos) {
-    localStorage.setItem(STRAGE_KEY, JSON.stringify(todos));
-  },
-};
+app.component("todo-item", {
+  template: `
+    <li>
+        {{ title }}
+        <button @click="$emit('remove')">Remove</button>
+</li>
+    `,
+  props: ["title"],
+  emits: ["remove"],
+});
+
+app.mount("#app");

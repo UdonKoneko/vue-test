@@ -5,22 +5,24 @@
     <script src="https://unpkg.com/vue@3.0.0/dist/vue.global.js"></script>
   </head>
   <body>
-    <ul id="app">
-      <li v-for="(value, name, index) in todos">
-        {{ index }}. {{ name }}: {{ value }}
-      </li>
-    </ul>
-
-    <script>
-      Vue.createApp({
-        data() {
-          return {
-            todos: {
-              title: "aaa",
-            },
-          };
-        },
-      }).mount("#app");
-    </script>
+    <div id="app">
+      <form v-on:submit.prevent="addNewTodo">
+        <label for="new-todo">Add a odo</label>
+        <input
+          v-model="newTodoText"
+          id="new-todo"
+          placeholder="うどんを食べる"
+        />
+        <button>Add</button>
+      </form>
+      <ul>
+        <todo-item
+          v-for="(todo, index) in todos"
+          :key="todo.id"
+          :title="todo.title"
+          @remove="todos.splice(index, 1)"
+        ></todo-item>
+      </ul>
+    </div>
   </body>
 </html>
