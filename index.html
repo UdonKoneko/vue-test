@@ -6,7 +6,8 @@
     <script type="text/javascript" src="main.js"></script>
   </head>
   <body>
-    <div id="app">
+    <section id="app">
+      <header class="header"><h1>todos</h1></header>
       <form v-on:submit.prevent="addNewTodo">
         <label for="new-todo">Add a todo</label>
         <input
@@ -24,6 +25,6 @@
           @remove="todos.splice(index, 1)"
         ></todo-item>
       </ul>
-    </div>
+    </section>
   </body>
 </html>
